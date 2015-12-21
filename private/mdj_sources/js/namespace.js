@@ -4,5 +4,9 @@
 
     window.mdj = window.mdj || {};
 
+    window.mdj.media = window.mdj.media || {};
+
 
 }(window));
+
+/* fin espacio de nombres */

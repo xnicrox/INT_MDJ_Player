@@ -9,9 +9,13 @@ var gulp = require('gulp'),
 gulp.task('create_player',function(){
 
 
-    gulp.src('../private/mdj_sources/js/*.js')
+    gulp.src([
+        '../private/mdj_sources/js/namespace.js',
+        '../private/mdj_sources/js/PlayerController.js'
+    ])
+
         .pipe(concat('mdj_player.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('../public/mdj_sources/js'))
 
     console.log(">>>Tarea finalizada");
