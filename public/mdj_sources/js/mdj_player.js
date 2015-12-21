@@ -15,7 +15,7 @@
 
     var UI = function () {
 
-        this.execute = function () {
+        this.interface = function () {
 
             console.log(">>ejecucion correcta");
         }
@@ -35,7 +35,7 @@
 
 
 //--Instanciación del playerMDJ
-    
+
 
     var PlayerMDJ = function (data) {
 

@@ -4,7 +4,7 @@
 
     var UI = function () {
 
-        this.execute = function () {
+        this.interface = function () {
 
             console.log(">>ejecucion correcta");
         }
