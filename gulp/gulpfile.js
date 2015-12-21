@@ -11,6 +11,7 @@ gulp.task('create_player',function(){
 
     gulp.src([
         '../private/mdj_sources/js/namespace.js',
+        '../private/mdj_sources/js/UIController.js',
         '../private/mdj_sources/js/PlayerController.js'
     ])
 

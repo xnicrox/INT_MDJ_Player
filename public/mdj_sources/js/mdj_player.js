@@ -9,7 +9,25 @@
 
 }(window));
 
-/* fin espacio de nombres */
+/* Componentes MDJPlayer */
+
+(function (namespace) {
+
+    var UI = function () {
+
+        this.execute = function () {
+
+            console.log(">>ejecucion correcta");
+        }
+
+    }
+
+    //-- Creacion de espacio de nombres
+
+    namespace.UI = UI;
+}(mdj.media));
+/* Instanciación y configuración del player */
+
 (function (namespace) {
 
 
@@ -17,8 +35,10 @@
 
 
 //--Instanciación del playerMDJ
+    
 
     var PlayerMDJ = function (data) {
+
 
         //--Configuracion para el player
         var dataConfiguration = data;

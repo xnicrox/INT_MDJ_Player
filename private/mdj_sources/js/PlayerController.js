@@ -1,3 +1,5 @@
+/* Instanciación y configuración del player */
+
 (function (namespace) {
 
 
@@ -6,7 +8,9 @@
 
 //--Instanciación del playerMDJ
 
+
     var PlayerMDJ = function (data) {
+
 
         //--Configuracion para el player
         var dataConfiguration = data;

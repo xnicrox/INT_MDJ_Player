@@ -8,5 +8,3 @@
 
 
 }(window));
-
-/* fin espacio de nombres */
