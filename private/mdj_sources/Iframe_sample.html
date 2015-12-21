@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>MDJ - iFrame</title>
+
+    <script src="//assets.adobedtm.com/577c3689ea990d22d8d98c00c4aa568bec64a426/satelliteLib-fb2e2a793dcfc2101758e38b035acde4539c384d.js"></script><!--s_code play.cadenaser.com-->
+
+    <link href="http://vjs.zencdn.net/5.3.0/video-js.css" rel="stylesheet">
+    <!-- If you'd like to support IE8 -->
+    <script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+    <script src="http://vjs.zencdn.net/5.3.0/video.js"></script>
+
+    <script src="js/controller.js"></script>
+
+
+
+    <style>
+        body {
+            margin: 0 auto;
+            background: url(
+            data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAKUlEQVQIW2OMiYn5zwAFR48eZWCECYA41tbWEAEYB6SQUVFR8T9IBgYAjHgQoJYEZjAAAAAASUVORK5CYII=
+            ) repeat;
+
+            font-family: 'Roboto', sans-serif;
+
+            /*background-color: darkgray;*/
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+<div id="MDJplayer"></div>
+
+
+</body>
+
+
+<script language="JavaScript">
+
+
+    //--Configuracion/////////////////////////////////////////////////
+
+
+    var mediaTopEmbed = new PlayerMDJ({
+        "id_cuenta": "huffingtonpost",
+        "media_type": "video",
+        "id_player": "20",
+        "id_media": "ZOOMIN_AC8B3355AE86353454EC0E4101A7FBC6_500k",
+        "id_container": "MDJplayer",
+        "width": "640",
+        "height": "360",
+        "autoplay": false,
+
+        "controls": true,
+        "skin": "video-js vjs-default-skin",
+        "preload": "auto",
+        techOrder: ["html5", "flash"]
+
+    });
+
+    mediaTopEmbed.PlayerFactory();//--cargar FAPI
+
+
+
+</script>
+
+
+</html>
+
+
+
+
+
