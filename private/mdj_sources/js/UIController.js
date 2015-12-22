@@ -7,6 +7,8 @@
         this.interface = function () {
 
             console.log("*>>ejecucion correcta");
+
+
         }
 
     }

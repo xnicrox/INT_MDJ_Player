@@ -20,33 +20,49 @@
         //--Creacion e instanciacion del player
         this.PlayerInstance = function (parameters, player) {
 
+            //--Validacion de datos
+            var playerDataModel = new mdj.media.DataModel(player);
+
             // Crear nodo - etiqueta
             var playerElement = document.createElement("video");
-            playerElement.id = player.id_container + "_video";
-            document.getElementById(player.id_container).appendChild(playerElement);
+            playerElement.id = playerDataModel.id_container + "_video";
+            document.getElementById(playerDataModel.id_container).appendChild(playerElement);
 
             //Configuramos el player
             var playerID = document.getElementById(playerElement.id);
 
-            playerID.className = player.skin;
+            playerID.className = playerDataModel.skin;
 
             playerID.src = parameters.asset[0].url[2].url; //---video mp4 por defecto
 
             var mainPlayer = videojs(playerID, {
-                techOrder: player.techOrder,
-                "width": player.width,
-                "height": player.height,
-                "controls": player.controls,
-                "autoplay": player.autoplay,
-                "preload": player.preload,
+                "playbackRates": playerDataModel.playbackRates,
+                "techOrder": playerDataModel.techOrder,
+                "width": playerDataModel.width,
+                "height": playerDataModel.height,
+                "controls": playerDataModel.controls,
+                "autoplay": playerDataModel.autoplay,
+                "preload": playerDataModel.preload,
                 "poster": parameters.url_video_still
             }, function () {
 
                 console.log("video inicializado");
 
-                // adding a button to the player
-                var buttonBitrate = mainPlayer.addChild('button');
+       /*         // adding a button to the player
+                var buttonBitrate = mainPlayer.addChild('button', {
+                    text: 'Press Me',
+                    buttonChildExample: {
+                        buttonChildOption: true
+                    }
+                });
+
                 buttonBitrate.el(); // -> button element
+
+                buttonBitrate.on('click', function(){
+                    console.log('Button Clicked!');
+                });
+                //buttonBitrate.trigger('customevent');*/
+
 
 
             });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head lang="es">
     <meta charset="UTF-8">
     <title>MDJ</title>
@@ -47,6 +47,7 @@
 
 <div id="MDJplayer"></div>
 
+
 </body>
 
 
@@ -67,9 +68,10 @@
         "autoplay": false,
 
         "controls": true,
-        "skin": "video-js vjs-default-skin",
+        //"skin": "video-js vjs-default-skin",
         "preload": "auto",
-        techOrder: ["html5", "flash"]
+        "playbackRates": [0.5, 1, 1.5, 2, 4],
+        "techOrder": ["html5", "flash"]
 
     });
 
