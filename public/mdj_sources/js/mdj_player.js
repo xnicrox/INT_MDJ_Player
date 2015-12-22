@@ -143,7 +143,7 @@
 
                 console.log("video inicializado");
 
-       /*         // adding a button to the player
+      /*          // adding a button to the player
                 var buttonBitrate = mainPlayer.addChild('button', {
                     text: 'Press Me',
                     buttonChildExample: {

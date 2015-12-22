@@ -2,12 +2,15 @@
 
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    sass = require('gulp-sass');
 
 /*configuracion de las tareas */
 
-gulp.task('create_player',function(){
 
+//--compilar modulos
+
+gulp.task('create_player',function(){
 
     gulp.src([
         '../private/mdj_sources/js/namespace.js',
@@ -25,13 +28,45 @@ gulp.task('create_player',function(){
 
 });
 
-//--Actualización en tiempo real
 
+
+//---compilar scss
+
+gulp.task('create_skin',function(){
+
+    gulp.src('../private/mdj_sources/scss/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('../public/mdj_sources/css'));
+
+    console.log(">>> CSS actualizado");
+
+});
+
+
+
+/* Actualización en tiempo real */
+
+
+//--Modulos
 gulp.task('live_create_player', function () {
 
-    gulp.watch('../private/mdj_sources/js/*.js',['create_player']) ;
+    gulp.watch('../private/mdj_sources/js/*.js',['create_player']);
 
-    console.log(">>> Actualizado");
+    console.log(">>> ok");
 
-})
+});
+
+//--css
+gulp.task('live_create_skin', function () {
+
+    gulp.watch('../private/mdj_sources/scss/**/*.scss',['create_skin']);
+
+    console.log(">>> ok");
+
+});
+
+
+
+
+
 
