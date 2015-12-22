@@ -44,6 +44,11 @@
 
                 console.log("video inicializado");
 
+                // adding a button to the player
+                var buttonBitrate = mainPlayer.addChild('button');
+                buttonBitrate.el(); // -> button element
+
+
             });
 
         }

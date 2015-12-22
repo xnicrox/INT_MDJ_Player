@@ -11,6 +11,7 @@ gulp.task('create_player',function(){
 
     gulp.src([
         '../private/mdj_sources/js/namespace.js',
+        '../private/mdj_sources/js/Events.js',
         '../private/mdj_sources/js/UIController.js',
         '../private/mdj_sources/js/PlayerController.js'
     ])
@@ -19,6 +20,17 @@ gulp.task('create_player',function(){
         //.pipe(uglify())
         .pipe(gulp.dest('../public/mdj_sources/js'))
 
-    console.log(">>>Tarea finalizada");
+    console.log(">>> Compilado");
 
 });
+
+//--Actualización en tiempo real
+
+gulp.task('live_create_player', function () {
+
+    gulp.watch('../private/mdj_sources/js/*.js',['create_player']) ;
+
+    console.log(">>> Actualizado");
+
+})
+

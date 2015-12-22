@@ -9,6 +9,21 @@
 
 }(window));
 
+/* Declaración de eventos */
+
+(function(namespace){
+
+
+    var Events = function () {
+
+
+
+    }
+
+    //-- Creacion de espacio de nombres
+
+    namespace.Events = Events;
+}(mdj.media));
 /* Componentes MDJPlayer */
 
 (function (namespace) {
@@ -17,7 +32,7 @@
 
         this.interface = function () {
 
-            console.log(">>ejecucion correcta");
+            console.log("*>>ejecucion correcta");
         }
 
     }
@@ -71,6 +86,11 @@
             }, function () {
 
                 console.log("video inicializado");
+
+                // adding a button to the player
+                var buttonBitrate = mainPlayer.addChild('button');
+                buttonBitrate.el(); // -> button element
+
 
             });
 
