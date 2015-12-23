@@ -48,22 +48,20 @@
                 "poster": parameters.url_video_still
             }, function () {
 
-                console.log("video inicializado");
+                console.log(">>video inicializado");
 
-      /*          // adding a button to the player
-                var buttonBitrate = mainPlayer.addChild('button', {
-                    text: 'Press Me',
-                    buttonChildExample: {
-                        buttonChildOption: true
-                    }
+                // adding a button to the player
+                var buttonBitrate = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
                 });
 
-                buttonBitrate.el(); // -> button element
+                buttonBitrate.addClass("mdj_button_bitrate");
+
 
                 buttonBitrate.on('click', function(){
-                    console.log('Button Clicked!');
+                    console.log('Cambio de calidad');
                 });
-                //buttonBitrate.trigger('customevent');*/
+                //buttonBitrate.trigger('customevent');
 
 
 

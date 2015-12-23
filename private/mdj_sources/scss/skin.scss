@@ -31,7 +31,7 @@ $center-big-play-button: true; // true default
   /* The base font size controls the size of everything, not just text.
      All dimensions use em-based sizes so that the scale along with the font size.
      Try increasing it to 15px and see what happens. */
-  font-size: 10px;
+  font-size: 12px;
 
   /* The main font color changes the ICON COLORS as well as the text */
   color: $primary-foreground-color;
@@ -121,5 +121,24 @@ $slider-bg-color: lighten($primary-background-color, 33%);
   background: ligthen($slider-bg-color, 50%);
   /* Otherwise we'll rely on stacked opacities */
   background: rgba($slider-bg-color, 0.75);
+}
+
+
+.vjs-playing, .vjs-paused{
+
+  background-color: #880000 !important;
+
+}
+
+.mdj_button_bitrate{
+
+  //width: 10% !important;
+  background: url(../assets/high20_1.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important;
+  background-position: center !important;
+  //background-color: #260000 !important;
+
+
 }
 
