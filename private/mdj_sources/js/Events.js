@@ -5,6 +5,8 @@
 
     var Events = function () {
 
+        console.log(">> Escuchando eventos..");
+
 
 
     }

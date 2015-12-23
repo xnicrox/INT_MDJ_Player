@@ -17,7 +17,8 @@ gulp.task('create_player',function(){
         '../private/mdj_sources/js/Events.js',
         '../private/mdj_sources/js/DataModel.js',
         '../private/mdj_sources/js/UIController.js',
-        '../private/mdj_sources/js/PlayerController.js'
+        '../private/mdj_sources/js/PlayerController.js',
+        '../private/mdj_sources/js/StatController.js'
     ])
 
         .pipe(concat('mdj_player.js'))

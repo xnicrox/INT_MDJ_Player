@@ -11,6 +11,8 @@
 
     var PlayerMDJ = function (data) {
 
+        console.log(">> Cargando configuracion..");
+
 
         //--Configuracion para el player
         var dataConfiguration = data;

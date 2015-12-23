@@ -5,6 +5,8 @@
 
     var DataModel = function (data) {
 
+        console.log(">> Cargando modelo de datos..");
+
         //console.log("datamodel>", data);
 
         var checkData = function (dataplayer) {
