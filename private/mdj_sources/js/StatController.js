@@ -2,16 +2,11 @@
 
 (function (namespace) {
 
+    console.log(">> Cargando estadisticas..");
+
     var StatController = function () {
 
-        this.interface = function () {
 
-            ///--Gestion de estadisticas
-
-            console.log(">> Cargando estadisticas..");
-
-
-        }
 
     }
 

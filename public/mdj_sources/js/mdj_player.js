@@ -13,10 +13,10 @@
 
 (function(namespace){
 
+    console.log(">> Escuchando eventos..");
+
 
     var Events = function () {
-
-        console.log(">> Escuchando eventos..");
 
 
 
@@ -82,20 +82,32 @@
 
 (function (namespace) {
 
+    console.log(">> Cargando Interface..");
+
     var UI = function () {
 
-        this.interface = function () {
-
-            console.log(">> Cargando Interface..");
-
-
-        }
 
     }
 
     //-- Creacion de espacio de nombres
 
     namespace.UI = UI;
+}(mdj.media));
+/* Controlador de estadisticas */
+
+(function (namespace) {
+
+    console.log(">> Cargando estadisticas..");
+
+    var StatController = function () {
+
+
+
+    }
+
+    //-- Creacion de espacio de nombres
+
+    namespace.StatController = StatController;
 }(mdj.media));
 /* Instanciación y configuración del player */
 
@@ -241,25 +253,3 @@
     namespace.PlayerMDJ = PlayerMDJ;
 
 }(mdj.media))
-
-/* Controlador de estadisticas */
-
-(function (namespace) {
-
-    var StatController = function () {
-
-        this.interface = function () {
-
-            ///--Gestion de estadisticas
-
-            console.log(">> Cargando estadisticas..");
-
-
-        }
-
-    }
-
-    //-- Creacion de espacio de nombres
-
-    namespace.StatController = StatController;
-}(mdj.media));

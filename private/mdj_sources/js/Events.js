@@ -2,10 +2,10 @@
 
 (function(namespace){
 
+    console.log(">> Escuchando eventos..");
+
 
     var Events = function () {
-
-        console.log(">> Escuchando eventos..");
 
 
 
