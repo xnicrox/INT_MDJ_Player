@@ -48,23 +48,16 @@ gulp.task('create_skin',function(){
 /* Actualización en tiempo real */
 
 
-//--Modulos
+//--Modulos y css
 gulp.task('live_create_player', function () {
 
     gulp.watch('../private/mdj_sources/js/*.js',['create_player']);
-
-    console.log(">>> ok");
-
-});
-
-//--css
-gulp.task('live_create_skin', function () {
-
     gulp.watch('../private/mdj_sources/scss/**/*.scss',['create_skin']);
 
     console.log(">>> ok");
 
 });
+
 
 
 

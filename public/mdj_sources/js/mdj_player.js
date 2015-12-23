@@ -16,6 +16,8 @@
 
     var Events = function () {
 
+        console.log(">> Escuchando eventos..");
+
 
 
     }
@@ -31,6 +33,8 @@
 
 
     var DataModel = function (data) {
+
+        console.log(">> Cargando modelo de datos..");
 
         //console.log("datamodel>", data);
 
@@ -82,7 +86,7 @@
 
         this.interface = function () {
 
-            console.log("*>>ejecucion correcta");
+            console.log(">> Cargando Interface..");
 
 
         }
@@ -105,6 +109,8 @@
 
 
     var PlayerMDJ = function (data) {
+
+        console.log(">> Cargando configuracion..");
 
 
         //--Configuracion para el player
@@ -235,3 +241,25 @@
     namespace.PlayerMDJ = PlayerMDJ;
 
 }(mdj.media))
+
+/* Controlador de estadisticas */
+
+(function (namespace) {
+
+    var StatController = function () {
+
+        this.interface = function () {
+
+            ///--Gestion de estadisticas
+
+            console.log(">> Cargando estadisticas..");
+
+
+        }
+
+    }
+
+    //-- Creacion de espacio de nombres
+
+    namespace.StatController = StatController;
+}(mdj.media));

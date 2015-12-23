@@ -52,14 +52,14 @@
 .video-js .vjs-big-play-button,
 .video-js .vjs-menu-button .vjs-menu-content {
   /* IE8 - has no alpha support */
-  background-color: #003447;
+  background-color: #3b3f42;
   /* Opacity: 1.0 = 100%, 0.0 = 0% */
-  background-color: rgba(0, 52, 71, 0.7); }
+  background-color: rgba(59, 63, 66, 0.7); }
 
 /* Slider - used for Volume bar and Progress bar */
 .video-js .vjs-slider {
-  background-color: #00afef;
-  background-color: rgba(0, 175, 239, 0.5); }
+  background-color: #8d9499;
+  background-color: rgba(141, 148, 153, 0.5); }
 
 /* The slider bar color is used for the progress bar and the volume bar
    (the first two can be removed after a fix that's coming) */
@@ -71,14 +71,14 @@
 /* The main progress bar also has a bar that shows how much has been loaded. */
 .video-js .vjs-load-progress {
   /* For IE8 we'll lighten the color */
-  background: ligthen(#00afef, 25%);
+  background: ligthen(#8d9499, 25%);
   /* Otherwise we'll rely on stacked opacities */
-  background: rgba(0, 175, 239, 0.5); }
+  background: rgba(141, 148, 153, 0.5); }
 
 /* The load progress bar also has internal divs that represent
    smaller disconnected loaded time ranges */
 .video-js .vjs-load-progress div {
   /* For IE8 we'll lighten the color */
-  background: ligthen(#00afef, 50%);
+  background: ligthen(#8d9499, 50%);
   /* Otherwise we'll rely on stacked opacities */
-  background: rgba(0, 175, 239, 0.75); }
+  background: rgba(141, 148, 153, 0.75); }

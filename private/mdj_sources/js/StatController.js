@@ -6,6 +6,8 @@
 
         this.interface = function () {
 
+            ///--Gestion de estadisticas
+
             console.log(">> Cargando estadisticas..");
 
 
