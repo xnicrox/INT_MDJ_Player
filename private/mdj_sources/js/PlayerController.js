@@ -48,20 +48,36 @@
                 "poster": parameters.url_video_still
             }, function () {
 
+                /* esta funcion se inicializa despues de la carga del player */
+
                 console.log(">>video inicializado");
 
-                // adding a button to the player
+                //--Incluir boton bitrate
+
                 var buttonBitrate = mainPlayer.controlBar.addChild('button', {
                     text: 'Press Me'
                 });
 
                 buttonBitrate.addClass("mdj_button_bitrate");
 
-
-                buttonBitrate.on('click', function(){
-                    console.log('Cambio de calidad');
+                buttonBitrate.on('click', function () {
+                    console.log('->Cambio de calidad');
                 });
+
                 //buttonBitrate.trigger('customevent');
+
+
+                //--Incluir boton bitrate
+
+           /*     var buttonshare = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
+                });
+
+                buttonBitrate.addClass("mdj_button_share");
+
+                buttonBitrate.on('click', function () {
+                    console.log('->Compartir redes sociales');
+                });*/
 
 
 

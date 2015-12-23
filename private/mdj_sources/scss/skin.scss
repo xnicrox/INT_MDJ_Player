@@ -133,12 +133,22 @@ $slider-bg-color: lighten($primary-background-color, 33%);
 .mdj_button_bitrate{
 
   //width: 10% !important;
-  background: url(../assets/high20_1.svg) !important;
+  background: url(../assets/bitrate_hq.svg) !important;
   background-repeat: no-repeat !important;
   background-size: 50% 50% !important;
   background-position: center !important;
+  cursor: pointer;
   //background-color: #260000 !important;
 
+
+}
+
+.mdj_button_share{
+
+  background: url(../assets/share.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important;
+  //background-position: center !important;
 
 }
 

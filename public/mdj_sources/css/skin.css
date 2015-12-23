@@ -87,7 +87,13 @@
   background-color: #880000 !important; }
 
 .mdj_button_bitrate {
-  background: url(../assets/high20_1.svg) !important;
+  background: url(../assets/bitrate_hq.svg) !important;
   background-repeat: no-repeat !important;
   background-size: 50% 50% !important;
-  background-position: center !important; }
+  background-position: center !important;
+  cursor: pointer; }
+
+.mdj_button_share {
+  background: url(../assets/share.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important; }
