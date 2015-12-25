@@ -11,6 +11,8 @@
 
     var PlayerMDJ = function (data) {
 
+        console.log(">> Cargando configuracion..");
+
 
         //--Configuracion para el player
         var dataConfiguration = data;
@@ -46,22 +48,36 @@
                 "poster": parameters.url_video_still
             }, function () {
 
-                console.log("video inicializado");
+                /* esta funcion se inicializa despues de la carga del player */
 
-      /*          // adding a button to the player
-                var buttonBitrate = mainPlayer.addChild('button', {
-                    text: 'Press Me',
-                    buttonChildExample: {
-                        buttonChildOption: true
-                    }
+                console.log(">>video inicializado");
+
+                //--Incluir boton bitrate
+
+                var buttonBitrate = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
                 });
 
-                buttonBitrate.el(); // -> button element
+                buttonBitrate.addClass("mdj_button_bitrate");
 
-                buttonBitrate.on('click', function(){
-                    console.log('Button Clicked!');
+                buttonBitrate.on('click', function () {
+                    console.log('->Cambio de calidad');
                 });
-                //buttonBitrate.trigger('customevent');*/
+
+                //buttonBitrate.trigger('customevent');
+
+
+                //--Incluir boton bitrate
+
+           /*     var buttonshare = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
+                });
+
+                buttonBitrate.addClass("mdj_button_share");
+
+                buttonBitrate.on('click', function () {
+                    console.log('->Compartir redes sociales');
+                });*/
 
 
 

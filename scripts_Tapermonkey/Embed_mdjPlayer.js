@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         New Userscript
+// @name         mdjPlayer para yu
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  try to take over the world!
@@ -15,18 +15,18 @@ var xPlayer = document.getElementById(idTOP);
 var divPlayer="";
 
 var time=setInterval(function(){
-    
+
     divPlayer= document.getElementById(idTOP+"_base");
 
     console.log("divPlayer-->",divPlayer);
-    
-   if(divPlayer!==null){
 
-           xPlayer.innerHTML='<iframe src="http://mdjplayer.esy.es/Iframe_sample.html" width="640" height="360"></iframe>';
+    if(divPlayer!==null){
 
-           clearInterval(time);
-                  console.log("parado");
-   }
+        xPlayer.innerHTML='<iframe src="http://mdjplayer.esy.es/mdj/tests/test_component.html" width="640" height="360" allowfullscreen></iframe>';
+
+        clearInterval(time);
+        console.log("parado");
+    }
 
 },1000)
 

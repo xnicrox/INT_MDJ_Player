@@ -13,6 +13,8 @@
 
 (function(namespace){
 
+    console.log(">> Escuchando eventos..");
+
 
     var Events = function () {
 
@@ -31,6 +33,8 @@
 
 
     var DataModel = function (data) {
+
+        console.log(">> Cargando modelo de datos..");
 
         //console.log("datamodel>", data);
 
@@ -78,20 +82,32 @@
 
 (function (namespace) {
 
+    console.log(">> Cargando Interface..");
+
     var UI = function () {
 
-        this.interface = function () {
-
-            console.log("*>>ejecucion correcta");
-
-
-        }
 
     }
 
     //-- Creacion de espacio de nombres
 
     namespace.UI = UI;
+}(mdj.media));
+/* Controlador de estadisticas */
+
+(function (namespace) {
+
+    console.log(">> Cargando estadisticas..");
+
+    var StatController = function () {
+
+
+
+    }
+
+    //-- Creacion de espacio de nombres
+
+    namespace.StatController = StatController;
 }(mdj.media));
 /* Instanciación y configuración del player */
 
@@ -105,6 +121,8 @@
 
 
     var PlayerMDJ = function (data) {
+
+        console.log(">> Cargando configuracion..");
 
 
         //--Configuracion para el player
@@ -141,22 +159,36 @@
                 "poster": parameters.url_video_still
             }, function () {
 
-                console.log("video inicializado");
+                /* esta funcion se inicializa despues de la carga del player */
 
-      /*          // adding a button to the player
-                var buttonBitrate = mainPlayer.addChild('button', {
-                    text: 'Press Me',
-                    buttonChildExample: {
-                        buttonChildOption: true
-                    }
+                console.log(">>video inicializado");
+
+                //--Incluir boton bitrate
+
+                var buttonBitrate = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
                 });
 
-                buttonBitrate.el(); // -> button element
+                buttonBitrate.addClass("mdj_button_bitrate");
 
-                buttonBitrate.on('click', function(){
-                    console.log('Button Clicked!');
+                buttonBitrate.on('click', function () {
+                    console.log('->Cambio de calidad');
                 });
-                //buttonBitrate.trigger('customevent');*/
+
+                //buttonBitrate.trigger('customevent');
+
+
+                //--Incluir boton bitrate
+
+           /*     var buttonshare = mainPlayer.controlBar.addChild('button', {
+                    text: 'Press Me'
+                });
+
+                buttonBitrate.addClass("mdj_button_share");
+
+                buttonBitrate.on('click', function () {
+                    console.log('->Compartir redes sociales');
+                });*/
 
 
 

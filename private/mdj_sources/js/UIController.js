@@ -2,14 +2,10 @@
 
 (function (namespace) {
 
+    console.log(">> Cargando Interface..");
+
     var UI = function () {
 
-        this.interface = function () {
-
-            console.log("*>>ejecucion correcta");
-
-
-        }
 
     }
 

@@ -22,7 +22,7 @@ $primary-foreground-color: #fff; // #fff default
 // The default color of control backgrounds is mostly black but with a little
 // bit of blue so it can still be seen on all-black video frames, which are common.
 // Try changing to #900
-$primary-background-color: #671822;  // #2B333F default
+$primary-background-color: #3b3f42;  // #2B333F default
 
 // Try changing to true
 $center-big-play-button: true; // true default
@@ -31,7 +31,7 @@ $center-big-play-button: true; // true default
   /* The base font size controls the size of everything, not just text.
      All dimensions use em-based sizes so that the scale along with the font size.
      Try increasing it to 15px and see what happens. */
-  font-size: 10px;
+  font-size: 12px;
 
   /* The main font color changes the ICON COLORS as well as the text */
   color: $primary-foreground-color;
@@ -121,5 +121,34 @@ $slider-bg-color: lighten($primary-background-color, 33%);
   background: ligthen($slider-bg-color, 50%);
   /* Otherwise we'll rely on stacked opacities */
   background: rgba($slider-bg-color, 0.75);
+}
+
+
+.vjs-playing, .vjs-paused{
+
+  background-color: #880000 !important;
+
+}
+
+.mdj_button_bitrate{
+
+  //width: 10% !important;
+  background: url(../assets/bitrate_hq.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important;
+  background-position: center !important;
+  cursor: pointer;
+  //background-color: #260000 !important;
+
+
+}
+
+.mdj_button_share{
+
+  background: url(../assets/share.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 50% 50% !important;
+  //background-position: center !important;
+
 }
 
