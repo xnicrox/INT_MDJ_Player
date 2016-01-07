@@ -6,6 +6,8 @@
 
     window.mdj.media = window.mdj.media || {};
 
+    window.mdj.media.DataModel = window.mdj.media.DataModel || {};
+
 
 }(window));
 
@@ -31,8 +33,29 @@
 
 (function(namespace){
 
+    //--parametros configuracion fapi
 
-    var DataModel = function (data) {
+    namespace.id_cuenta = ""                                               //--ID cuenta
+    namespace.media_type = "";                                             //--Tipo de medio ej:video/audio
+    namespace.id_player = "";                                              //--Identificador del player ej:20
+    namespace.id_media = "";                                               //--Identificador del video
+    namespace.id_container = "";                                           //--Identificador de la capa
+    namespace.width = "";                                                  //--ancho por defecto del video
+    namespace.height = "";                                                 //--alto por defecto del video
+
+    //--parametros de videojs
+
+    namespace.skin = "";                                                   //--skin por defecto
+    namespace.playbackRates = "";                                          //--Velocidad de reproduccion
+    namespace.techOrder = "";                                              //--Orden de tecnologias
+    //namespace.width = "";                                                  //--ancho
+    //namespace.height = "";                                                 //--alto
+    namespace.controls = "";                                               //--controles
+    namespace.autoplay = "";                                               //--Autoinicio
+    namespace.preload = "";                                                //--Precarga del video
+
+
+    var CheckDataModel = function (data) {
 
         console.log(">> Cargando modelo de datos..");
 
@@ -51,33 +74,33 @@
 
         //--parametros configuracion fapi
 
-        this.id_cuenta = data.id_cuenta;                                                  //--ID cuenta
-        this.media_type = data.media_type;                                                //--Tipo de medio ej:video/audio
-        this.id_player = data.id_player;                                                  //--Identificador del player ej:20
-        this.id_media = data.id_media;                                                    //--Identificador del video
-        this.id_container = data.id_container;                                            //--Identificador de la capa
-        this.width = (checkData(data.width)) ? data.width : "800";                        //--ancho por defecto del video
-        this.height = (checkData(data.height)) ? data.height : "360";                     //--alto por defecto del video
+        namespace.id_cuenta = (this.id_cuenta = data.id_cuenta);                                                 //--ID cuenta
+        namespace.media_type = (this.media_type = data.media_type);                                              //--Tipo de medio ej:video/audio
+        namespace.id_player = (this.id_player = data.id_player);                                                 //--Identificador del player ej:20
+        namespace.id_media = (this.id_media = data.id_media);                                                    //--Identificador del video
+        namespace.id_container = (this.id_container = data.id_container);                                        //--Identificador de la capa
+        namespace.width = (this.width = (checkData(data.width)) ? data.width : "800");                           //--ancho por defecto del video
+        namespace.height = (this.height = (checkData(data.height)) ? data.height : "360");                       //--alto por defecto del video
 
         //--parametros de videojs
 
-        this.skin = (checkData(data.skin)) ? data.skin : "video-js vjs-default-skin";     //--skin por defecto
-        this.playbackRates = data.playbackRates;                                          //--Velocidad de reproduccion
-        this.techOrder = data.techOrder;                                                  //--Orden de tecnologias
-        this.width = data.width;                                                          //--ancho
-        this.height = data.height;                                                        //--alto
-        this.controls = data.controls;                                                    //--controles
-        this.autoplay = data.autoplay;                                                    //--Autoinicio
-        this.preload = data.preload;                                                      //--Precarga del video
-
-
+        namespace.skin = (this.skin = (checkData(data.skin)) ? data.skin : "video-js vjs-default-skin");          //--skin por defecto
+        namespace.playbackRates = (this.playbackRates = data.playbackRates);                                      //--Velocidad de reproduccion
+        namespace.techOrder = (this.techOrder = data.techOrder);                                                  //--Orden de tecnologias
+        //namespace.width=(this.width = data.width);                                                              //--ancho
+        //namespace.height=(this.height = data.height);                                                           //--alto
+        namespace.controls = (this.controls = data.controls);                                                     //--controles
+        namespace.autoplay = (this.autoplay = data.autoplay);                                                     //--Autoinicio
+        namespace.preload = (this.preload = data.preload);                                                        //--Precarga del video
 
     }
 
-    //-- Creacion de espacio de nombres
+    //-- Funcion validadora
 
-    namespace.DataModel = DataModel;
-}(mdj.media));
+    namespace.CheckDataModel = CheckDataModel;
+
+
+}(mdj.media.DataModel));
 /* Componentes MDJPlayer */
 
 (function (namespace) {
@@ -97,9 +120,12 @@
 
 (function (namespace) {
 
-    console.log(">> Cargando estadisticas..");
+    console.log("**>> Cargando estadisticas..");
 
     var StatController = function () {
+
+        var statData = new mdj.media.DataModel();
+
 
 
 
@@ -134,7 +160,7 @@
         this.PlayerInstance = function (parameters, player) {
 
             //--Validacion de datos
-            var playerDataModel = new mdj.media.DataModel(player);
+            var playerDataModel = new mdj.media.DataModel.CheckDataModel(player);
 
             // Crear nodo - etiqueta
             var playerElement = document.createElement("video");

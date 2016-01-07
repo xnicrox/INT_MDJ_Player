@@ -2,9 +2,12 @@
 
 (function (namespace) {
 
-    console.log(">> Cargando estadisticas..");
+    console.log("**>> Cargando estadisticas..");
 
     var StatController = function () {
+
+        var statData = new mdj.media.DataModel();
+
 
 
 

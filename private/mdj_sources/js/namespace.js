@@ -6,5 +6,7 @@
 
     window.mdj.media = window.mdj.media || {};
 
+    window.mdj.media.DataModel = window.mdj.media.DataModel || {};
+
 
 }(window));

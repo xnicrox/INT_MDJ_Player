@@ -23,7 +23,7 @@
         this.PlayerInstance = function (parameters, player) {
 
             //--Validacion de datos
-            var playerDataModel = new mdj.media.DataModel(player);
+            var playerDataModel = new mdj.media.DataModel.CheckDataModel(player);
 
             // Crear nodo - etiqueta
             var playerElement = document.createElement("video");
