@@ -1,0 +1,20 @@
+{
+    "config":{
+
+        "plugins": [
+			
+             {	"id": "logtrust",
+                "type": "psd.statistics.plugins.LogTrustPlugin",
+                "url": "../plugins/mdj_logtrust.json"
+            }                         
+        ],
+        "routing": [
+            {"name": "mediaBegin", "plugins": "logtrust", "type":"custom"},
+            {"name": "mediaComplete", "plugins": "logtrust", "type":"custom"},
+            {"name": "adStart", "plugins": "logtrust", "type":"custom"},
+            {"name": "adComplete", "plugins": "logtrust", "type":"custom"},
+            {"name": "adSkip", "plugins": "logtrust", "type":"custom"},
+            {"name": "adError", "plugins": "logtrust", "type":"custom"}
+        ]
+    }
+}

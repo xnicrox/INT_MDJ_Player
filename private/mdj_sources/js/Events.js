@@ -2,12 +2,13 @@
 
 (function(namespace){
 
-
-
     console.log(">> Escuchando eventos..");
 
 
     var Events = function (data) {
+
+
+        var StatData = new mdj.media.StatController.StatMediator();
 
         var ListEvent = [
             "abort",
@@ -52,14 +53,18 @@
 
                case "canplay":
 
-                   mdj.media.DataModel.duration = parseInt(data.duration);
+                   //mdj.media.DataModel.duration = parseInt(data.duration);
                    //console.log(e, "-duracion>>", mdj.media.DataModel.duration);
 
                    break;
 
                case "play":
 
-                   mdj.media.StatController(); //--envio de estadisticas
+                   //mdj.media.StatController(); //--envio de estadisticas
+                   //StatData(); //--recuperando profile
+                   //mdj.media.StatController.StatMediator() ;
+
+                   break;
 
                case "progress":
 

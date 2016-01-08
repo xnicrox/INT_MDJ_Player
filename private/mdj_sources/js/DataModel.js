@@ -1,5 +1,10 @@
 /* Modelos de datos por defecto*/
 
+
+FAPI_URL = "http://fapi-top.prisasd.com/api";
+BASE_WEB = location.hostname + "/mdj/";
+BASE_conf = BASE_WEB + "/conf/";
+
 (function(namespace){
 
     //--parametros configuracion fapi --/

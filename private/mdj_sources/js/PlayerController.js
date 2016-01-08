@@ -3,8 +3,6 @@
 (function (namespace) {
 
 
-    FAPI_URL = "http://fapi-top.prisasd.com/api";
-
 
 //--Instanciación del playerMDJ
 

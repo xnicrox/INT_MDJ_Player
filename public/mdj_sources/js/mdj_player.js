@@ -8,6 +8,8 @@
 
     window.mdj.media.DataModel = window.mdj.media.DataModel || {};
 
+    window.mdj.media.StatController = window.mdj.media.StatController || {}
+
 
 }(window));
 
@@ -15,12 +17,13 @@
 
 (function(namespace){
 
-
-
     console.log(">> Escuchando eventos..");
 
 
     var Events = function (data) {
+
+
+        var StatData = new mdj.media.StatController.StatMediator();
 
         var ListEvent = [
             "abort",
@@ -65,14 +68,18 @@
 
                case "canplay":
 
-                   mdj.media.DataModel.duration = parseInt(data.duration);
+                   //mdj.media.DataModel.duration = parseInt(data.duration);
                    //console.log(e, "-duracion>>", mdj.media.DataModel.duration);
 
                    break;
 
                case "play":
 
-                   mdj.media.StatController(); //--envio de estadisticas
+                   //mdj.media.StatController(); //--envio de estadisticas
+                   //StatData(); //--recuperando profile
+                   //mdj.media.StatController.StatMediator() ;
+
+                   break;
 
                case "progress":
 
@@ -96,6 +103,11 @@
 }(mdj.media));
 
 /* Modelos de datos por defecto*/
+
+
+FAPI_URL = "http://fapi-top.prisasd.com/api";
+BASE_WEB = location.hostname + "/mdj/";
+BASE_conf = BASE_WEB + "/conf/";
 
 (function(namespace){
 
@@ -195,7 +207,9 @@
 
     console.log("**>> Cargando estadisticas..");
 
-    var StatController = function () {
+
+    var StatMediator= function (parameters) {
+
 
         var data = mdj.media.DataModel;
 
@@ -210,7 +224,33 @@
             data.currentTime
         ];
 
-        console.log("datos estadisticas>>",statData);
+        console.log("datos estadisticas>>", statData);
+
+
+
+        //--recuperando profile
+
+        var envio = function (data) {
+
+            //--Recuperando archivos de configuracion
+
+            //var ajaxData = data;
+            //
+            //var xhttp = new XMLHttpRequest();
+            //xhttp.onreadystatechange = function () {
+            //    if (xhttp.readyState == 4 && xhttp.status == 200) {
+            //
+            //
+            //        console.log("profile-->", JSON.parse(xhttp.responseText));
+            //
+            //
+            //    }
+            //};
+            //xhttp.open(BASE_conf + "/mdj_profile.json", true);
+            //xhttp.send();
+
+        };
+
 
 
     };
@@ -218,14 +258,13 @@
 
     //-- Creacion de espacio de nombres
 
-    namespace.StatController = StatController;
-}(mdj.media));
+    namespace.StatMediator= StatMediator;
+
+}(mdj.media.StatController));
 /* Instanciación y configuración del player */
 
 (function (namespace) {
 
-
-    FAPI_URL = "http://fapi-top.prisasd.com/api";
 
 
 //--Instanciación del playerMDJ
