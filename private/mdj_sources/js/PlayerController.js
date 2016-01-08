@@ -33,6 +33,8 @@
             //Configuramos el player
             var playerID = document.getElementById(playerElement.id);
 
+            var PlayerEvents = new mdj.media.Events(playerID);
+
             playerID.className = playerDataModel.skin;
 
             playerID.src = parameters.asset[0].url[2].url; //---video mp4 por defecto
@@ -48,7 +50,13 @@
                 "poster": parameters.url_video_still
             }, function () {
 
+
                 /* esta funcion se inicializa despues de la carga del player */
+
+                //--estadisticas
+                //mdj.media.StatController();
+
+
 
                 console.log(">>video inicializado");
 

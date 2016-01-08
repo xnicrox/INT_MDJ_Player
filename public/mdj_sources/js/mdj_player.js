@@ -15,14 +15,80 @@
 
 (function(namespace){
 
+
+
     console.log(">> Escuchando eventos..");
 
 
-    var Events = function () {
+    var Events = function (data) {
+
+        var ListEvent = [
+            "abort",
+            "play",
+            "canplay",
+            "canplaythrough",
+            "durationchange",
+            "emptied",
+            "ended",
+            "error",
+            "loadeddata",
+            "loadedmetadata",
+            "loadstart",
+            "pause",
+            "play",
+            "playing",
+            "progress",
+            "ratechange",
+            "seeked",
+            "seeking",
+            "stalled",
+            "suspend",
+            "timeupdate",
+            "volumechange",
+            "waiting"
+        ];
+
+        for (var i = 0; i <= ListEvent.length; i++) {
+
+            data.addEventListener(ListEvent[i], MDJEvent);
+
+            //console.log(i,"-Evento>>",ListEvent[i]);
+
+        }
+
+
+       function  MDJEvent(e) {
+
+            //console.log("MDJEvent>>", e.type);
+
+           switch(e.type){
+
+               case "canplay":
+
+                   mdj.media.DataModel.duration = parseInt(data.duration);
+                   //console.log(e, "-duracion>>", mdj.media.DataModel.duration);
+
+                   break;
+
+               case "play":
+
+                   mdj.media.StatController(); //--envio de estadisticas
+
+               case "progress":
+
+                   mdj.media.DataModel.currentTime = parseInt(data.currentTime);
+                   //console.log(e, "-currentTime>>", mdj.media.DataModel.currentTime);
+
+                   break;
+
+           }
+
+
+        }
 
 
 
-    }
+    };
 
     //-- Creacion de espacio de nombres
 
@@ -33,7 +99,7 @@
 
 (function(namespace){
 
-    //--parametros configuracion fapi
+    //--parametros configuracion fapi --/
 
     namespace.id_cuenta = ""                                               //--ID cuenta
     namespace.media_type = "";                                             //--Tipo de medio ej:video/audio
@@ -53,6 +119,13 @@
     namespace.controls = "";                                               //--controles
     namespace.autoplay = "";                                               //--Autoinicio
     namespace.preload = "";                                                //--Precarga del video
+
+    //--Propiedades de player
+
+    namespace.duration = 0;                                                 //--duracion del video
+    namespace.currentTime = 0;                                              //--tiempo actual
+
+
 
 
     var CheckDataModel = function (data) {
@@ -124,12 +197,24 @@
 
     var StatController = function () {
 
-        var statData = new mdj.media.DataModel();
+        var data = mdj.media.DataModel;
+
+        var statData = [
+
+            data.id_cuenta,
+            data.media_type,
+            data.id_player,
+            data.id_media,
+            data.id_container,
+            data.duration,
+            data.currentTime
+        ];
+
+        console.log("datos estadisticas>>",statData);
 
 
+    };
 
-
-    }
 
     //-- Creacion de espacio de nombres
 
@@ -170,6 +255,8 @@
             //Configuramos el player
             var playerID = document.getElementById(playerElement.id);
 
+            var PlayerEvents = new mdj.media.Events(playerID);
+
             playerID.className = playerDataModel.skin;
 
             playerID.src = parameters.asset[0].url[2].url; //---video mp4 por defecto
@@ -185,7 +272,13 @@
                 "poster": parameters.url_video_still
             }, function () {
 
+
                 /* esta funcion se inicializa despues de la carga del player */
+
+                //--estadisticas
+                //mdj.media.StatController();
+
+
 
                 console.log(">>video inicializado");
 

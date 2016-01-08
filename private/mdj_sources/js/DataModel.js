@@ -2,7 +2,7 @@
 
 (function(namespace){
 
-    //--parametros configuracion fapi
+    //--parametros configuracion fapi --/
 
     namespace.id_cuenta = ""                                               //--ID cuenta
     namespace.media_type = "";                                             //--Tipo de medio ej:video/audio
@@ -22,6 +22,13 @@
     namespace.controls = "";                                               //--controles
     namespace.autoplay = "";                                               //--Autoinicio
     namespace.preload = "";                                                //--Precarga del video
+
+    //--Propiedades de player
+
+    namespace.duration = 0;                                                 //--duracion del video
+    namespace.currentTime = 0;                                              //--tiempo actual
+
+
 
 
     var CheckDataModel = function (data) {
