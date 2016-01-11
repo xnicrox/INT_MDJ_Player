@@ -23,7 +23,7 @@
     var Events = function (data) {
 
 
-        var StatData = new mdj.media.StatController.StatMediator();
+        var StatData = new mdj.media.StatController;
 
         var ListEvent = [
             "abort",
@@ -59,7 +59,6 @@
 
         }
 
-
        function  MDJEvent(e) {
 
             //console.log("MDJEvent>>", e.type);
@@ -68,16 +67,14 @@
 
                case "canplay":
 
-                   //mdj.media.DataModel.duration = parseInt(data.duration);
+                   mdj.media.DataModel.duration = parseInt(data.duration);
                    //console.log(e, "-duracion>>", mdj.media.DataModel.duration);
 
                    break;
 
                case "play":
 
-                   //mdj.media.StatController(); //--envio de estadisticas
-                   //StatData(); //--recuperando profile
-                   //mdj.media.StatController.StatMediator() ;
+                   console.log("StatData>>>",StatData.RecoverStatData()); //--Recuperando Estadisticas
 
                    break;
 
@@ -106,8 +103,10 @@
 
 
 FAPI_URL = "http://fapi-top.prisasd.com/api";
-BASE_WEB = location.hostname + "/mdj/";
-BASE_conf = BASE_WEB + "/conf/";
+BASE_WEB = location.hostname + "/mdj";
+BASE_conf ="../conf";
+
+BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
 (function(namespace){
 
@@ -208,49 +207,53 @@ BASE_conf = BASE_WEB + "/conf/";
     console.log("**>> Cargando estadisticas..");
 
 
-    var StatMediator= function (parameters) {
+    var StatController = function (parameters) {
+
+        this.RecoverStatData = function () { //--Recuperamos los datos
+
+            var data = mdj.media.DataModel; //--Recuperamos modelo de datos
+
+            var statData = [
+
+                data.id_cuenta,
+                data.media_type,
+                data.id_player,
+                data.id_media,
+                data.id_container,
+                data.duration,
+                data.currentTime
+            ]
+
+            return statData;
 
 
-        var data = mdj.media.DataModel;
-
-        var statData = [
-
-            data.id_cuenta,
-            data.media_type,
-            data.id_player,
-            data.id_media,
-            data.id_container,
-            data.duration,
-            data.currentTime
-        ];
-
-        console.log("datos estadisticas>>", statData);
-
+        }
 
 
         //--recuperando profile
 
-        var envio = function (data) {
+        this.Profile = function (data) {
 
             //--Recuperando archivos de configuracion
 
-            //var ajaxData = data;
-            //
-            //var xhttp = new XMLHttpRequest();
-            //xhttp.onreadystatechange = function () {
-            //    if (xhttp.readyState == 4 && xhttp.status == 200) {
-            //
-            //
-            //        console.log("profile-->", JSON.parse(xhttp.responseText));
-            //
-            //
-            //    }
-            //};
-            //xhttp.open(BASE_conf + "/mdj_profile.json", true);
-            //xhttp.send();
+            var ajaxData = data;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+                    console.log("profile-->", JSON.parse(xhttp.responseText));
+
+                }
+            };
+
+
+            xhttp.open("GET", BASE_conf + BASE_profiles, true);
+            xhttp.send();
 
         };
 
+        this.Profile();//--cargando profile
 
 
     };
@@ -258,9 +261,9 @@ BASE_conf = BASE_WEB + "/conf/";
 
     //-- Creacion de espacio de nombres
 
-    namespace.StatMediator= StatMediator;
+    namespace.StatController= StatController;
 
-}(mdj.media.StatController));
+}(mdj.media));
 /* Instanciación y configuración del player */
 
 (function (namespace) {

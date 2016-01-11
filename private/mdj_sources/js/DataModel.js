@@ -2,8 +2,10 @@
 
 
 FAPI_URL = "http://fapi-top.prisasd.com/api";
-BASE_WEB = location.hostname + "/mdj/";
-BASE_conf = BASE_WEB + "/conf/";
+BASE_WEB = location.hostname + "/mdj";
+BASE_conf ="../conf";
+
+BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
 (function(namespace){
 
