@@ -108,6 +108,8 @@ BASE_conf ="../conf";
 
 BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
+
+
 (function(namespace){
 
     //--parametros configuracion fapi --/
@@ -204,10 +206,12 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
 (function (namespace) {
 
-    console.log("**>> Cargando estadisticas..");
+    console.log(">> Cargando estadisticas..");
 
 
     var StatController = function (parameters) {
+
+        var that = this;
 
         this.RecoverStatData = function () { //--Recuperamos los datos
 
@@ -226,34 +230,66 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
             return statData;
 
+        };
 
-        }
+
+        /* recuperando profile / plugin */
 
 
-        //--recuperando profile
-
-        this.Profile = function (data) {
+        this.statModules = function (file,data) {
 
             //--Recuperando archivos de configuracion
 
-            var ajaxData = data;
+            var checkFile = file;
 
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
 
-                    console.log("profile-->", JSON.parse(xhttp.responseText));
+                    var configData = JSON.parse(xhttp.responseText);
+
+                    if (checkFile == "profile") {
+                        that.configData(configData.config.plugins[0].url, "profile");//Mandar URL profile
+
+                    }
+
+                    if (checkFile == "plugin") {
+                        that.configData("cargando plugin...", "plugin");//Caragando plugin
+
+                    }
 
                 }
             };
 
+                xhttp.open("GET", data, true);
+                xhttp.send();
 
-            xhttp.open("GET", BASE_conf + BASE_profiles, true);
-            xhttp.send();
 
         };
 
-        this.Profile();//--cargando profile
+
+        /* Carga de Modulos */
+
+        this.statModules("profile", BASE_conf + BASE_profiles);//--cargando profile
+
+
+        this.configData = function (data, type) {
+
+            if (type == "profile") {
+
+                console.log("profile->", data); //--Visualizar profile
+                that.statModules("plugin", data); //--cargar plugin LogTrust
+
+            }
+
+            if (type == "plugin") {
+
+                console.log("plugin->", data); //--Visualizar profile
+
+            }
+
+
+        }
 
 
     };
@@ -264,6 +300,145 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
     namespace.StatController= StatController;
 
 }(mdj.media));
+/* Estadisticas LogTrustModule*/
+
+(function (namespace) {
+
+    var LogTrust = function (parameters) {
+
+        //****************Conversion de Datos***************
+
+
+        //Configuracion de Eventos
+
+        varAux0 = {};
+
+        for (var c1 in _mapaData) {
+
+
+            varAux1 = c1;
+
+            //Configuracion de variables
+            for (var c2 in _mapaDataMap) {
+
+
+                varAux2 = _mapaDataMap[c2];
+
+                if (varAux1 == varAux2) {
+
+
+                    sendlogTrust[c2] = _mapaData[c1];       //captura variables utiles
+
+                    //totalSizeString++;
+
+                    varAux0[c2] = _mapaDataMap[c2];
+                    delete _mapaDataMap[c2];
+
+
+                } else if (varAux2.indexOf("data.") == -1) {
+
+
+                    sendlogTrust[c2] = varAux2;           //Superponer variables "text."
+
+                    //totalSizeString++;
+
+                    varAux0[c2] = _mapaDataMap[c2];
+                    delete _mapaDataMap[c2];
+
+                }
+
+
+            }
+
+        }
+
+        for (var c3 in varAux0) {
+
+            _mapaDataMap[c3] = varAux0[c3];  //-- Recupera datos para una nueva pasada
+
+
+        }
+
+
+        //--Restriccion de envio
+
+        for (var r0 in sendlogTrust) {
+
+            varRes0 = r0;
+
+            for (var r1 in eventMap.vars) {
+
+                varRes1 = eventMap.vars[r1];
+
+                if (varRes0 == varRes1) {
+
+                    totalSizeString++;
+
+                    sendlogTrustEnvio[varRes1] = sendlogTrust[varRes0];
+                }
+            }
+
+        }
+
+
+        //--Composicion y envio de datos
+
+        (function () {
+
+            var stringConversion = "";
+
+            var TimeRandom = new Date();
+
+            var compoURL = "?event=" + eventMap.events[0] + "&";
+
+
+            for (var c3 in sendlogTrustEnvio) {
+
+                sizeString++;
+
+                stringConversion = String(sendlogTrustEnvio[c3]);
+
+                if (stringConversion != "") {      //--comprobar campo vacio
+
+
+                    if (urlDecodi()) {  //-- Codificando en caso de recibir el parametro del iframe
+
+
+                        if (c3 == varMedio) {
+                            sendlogTrustEnvio[c3] = urlDecodi();
+                        }
+                    }
+                    ;
+
+
+                    compoURL += c3 + "=" + sendlogTrustEnvio[c3];
+
+                    if (sizeString != totalSizeString) {
+                        compoURL += "&";
+                    } else {
+                        compoURL += "&rnd=" + TimeRandom.getTime() + "_" + Math.floor((Math.random() * 1000) + 1);
+                    }
+                }
+            }
+
+            objImagen.src = logtrustURL + compoURL;
+
+
+        }())//--Envio
+
+
+        //****************Fin de Conversion de Datos********
+
+
+    }
+
+
+    //-- Creacion de espacio de nombres*/
+
+    namespace.LogTrust = LogTrust;
+
+
+}(mdj.media.StatController));
 /* Instanciación y configuración del player */
 
 (function (namespace) {
@@ -322,7 +497,7 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
 
 
-                console.log(">>video inicializado");
+                console.log("video inicializado...");
 
                 //--Incluir boton bitrate
 

@@ -5,7 +5,7 @@
 			
              {	"id": "logtrust",
                 "type": "psd.statistics.plugins.LogTrustPlugin",
-                "url": "../plugins/mdj_logtrust.json"
+                "url": "../conf/plugins/mdj_logtrust.json"
             }                         
         ],
         "routing": [

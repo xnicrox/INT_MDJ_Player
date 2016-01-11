@@ -56,7 +56,7 @@
 
 
 
-                console.log(">>video inicializado");
+                console.log("video inicializado...");
 
                 //--Incluir boton bitrate
 

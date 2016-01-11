@@ -2,10 +2,12 @@
 
 (function (namespace) {
 
-    console.log("**>> Cargando estadisticas..");
+    console.log(">> Cargando estadisticas..");
 
 
     var StatController = function (parameters) {
+
+        var that = this;
 
         this.RecoverStatData = function () { //--Recuperamos los datos
 
@@ -24,34 +26,66 @@
 
             return statData;
 
+        };
 
-        }
+
+        /* recuperando profile / plugin */
 
 
-        //--recuperando profile
-
-        this.Profile = function (data) {
+        this.statModules = function (file,data) {
 
             //--Recuperando archivos de configuracion
 
-            var ajaxData = data;
+            var checkFile = file;
 
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
 
-                    console.log("profile-->", JSON.parse(xhttp.responseText));
+                    var configData = JSON.parse(xhttp.responseText);
+
+                    if (checkFile == "profile") {
+                        that.configData(configData.config.plugins[0].url, "profile");//Mandar URL profile
+
+                    }
+
+                    if (checkFile == "plugin") {
+                        that.configData("cargando plugin...", "plugin");//Caragando plugin
+
+                    }
 
                 }
             };
 
+                xhttp.open("GET", data, true);
+                xhttp.send();
 
-            xhttp.open("GET", BASE_conf + BASE_profiles, true);
-            xhttp.send();
 
         };
 
-        this.Profile();//--cargando profile
+
+        /* Carga de Modulos */
+
+        this.statModules("profile", BASE_conf + BASE_profiles);//--cargando profile
+
+
+        this.configData = function (data, type) {
+
+            if (type == "profile") {
+
+                console.log("profile->", data); //--Visualizar profile
+                that.statModules("plugin", data); //--cargar plugin LogTrust
+
+            }
+
+            if (type == "plugin") {
+
+                console.log("plugin->", data); //--Visualizar profile
+
+            }
+
+
+        }
 
 
     };

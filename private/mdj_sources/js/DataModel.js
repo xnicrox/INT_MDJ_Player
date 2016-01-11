@@ -7,6 +7,8 @@ BASE_conf ="../conf";
 
 BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
+
+
 (function(namespace){
 
     //--parametros configuracion fapi --/

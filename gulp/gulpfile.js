@@ -18,6 +18,7 @@ gulp.task('create_player',function(){
         '../private/mdj_sources/js/DataModel.js',
         '../private/mdj_sources/js/UIController.js',
         '../private/mdj_sources/js/StatController.js',
+        '../private/mdj_sources/js/mdj_logtrust.js',
         '../private/mdj_sources/js/PlayerController.js'
 
     ])
@@ -52,7 +53,7 @@ gulp.task('create_skin',function(){
 //--Modulos y css
 gulp.task('live_create_player', function () {
 
-    gulp.watch('../private/mdj_sources/js/*.js',['create_player']);
+    gulp.watch('../private/mdj_sources/js/**/*.js',['create_player']);
     gulp.watch('../private/mdj_sources/scss/**/*.scss',['create_skin']);
 
     console.log(">>> ok");
