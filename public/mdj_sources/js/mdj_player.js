@@ -104,9 +104,10 @@
 
 FAPI_URL = "http://fapi-top.prisasd.com/api";
 BASE_WEB = location.hostname + "/mdj";
-BASE_conf ="../conf";
+BASE_conf = "../conf";
 
-BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
+BASE_profiles = "/profiles/mdj_profile.json"; //--Profiles para estadisticas
+BASE_plugin = "/plugin/mdj_logtrust.json"; //--Profiles para estadisticas
 
 
 
@@ -114,7 +115,7 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
     //--parametros configuracion fapi --/
 
-    namespace.id_cuenta = ""                                               //--ID cuenta
+    namespace.id_cuenta = "";                                              //--ID cuenta
     namespace.media_type = "";                                             //--Tipo de medio ej:video/audio
     namespace.id_player = "";                                              //--Identificador del player ej:20
     namespace.id_media = "";                                               //--Identificador del video
@@ -240,6 +241,8 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
             //--Recuperando archivos de configuracion
 
+            console.log("data>>",data);
+
             var checkFile = file;
 
             var xhttp = new XMLHttpRequest();
@@ -249,12 +252,16 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
                     var configData = JSON.parse(xhttp.responseText);
 
                     if (checkFile == "profile") {
+
+                        if(typeof (configData) =="undefined");
+                        {console.log("--->ok undefined")}
+
                         that.configData(configData.config.plugins[0].url, "profile");//Mandar URL profile
 
                     }
 
                     if (checkFile == "plugin") {
-                        that.configData("cargando plugin...", "plugin");//Caragando plugin
+                        that.configData(configData, "plugin");//-- Cargando plugin
 
                     }
 
@@ -270,21 +277,20 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
         /* Carga de Modulos */
 
-        this.statModules("profile", BASE_conf + BASE_profiles);//--cargando profile
+        this.statModules("profile", BASE_conf + BASE_profiles);// --cargando profile
 
 
         this.configData = function (data, type) {
 
             if (type == "profile") {
 
-                console.log("profile->", data); //--Visualizar profile
-                that.statModules("plugin", data); //--cargar plugin LogTrust
+                console.log("profile->", data);  //--Visualizar profile
+                that.statModules("plugin", data); //-- cargar plugin LogTrust
 
             }
-
             if (type == "plugin") {
 
-                console.log("plugin->", data); //--Visualizar profile
+                console.log("plugin-->", data); //--Visualizar LogTrust
 
             }
 
@@ -358,7 +364,6 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
 
         }
-
 
         //--Restriccion de envio
 
@@ -511,6 +516,7 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
                     console.log('->Cambio de calidad');
                 });
 
+
                 //buttonBitrate.trigger('customevent');
 
 
@@ -587,7 +593,7 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
                 that.PlayerMediator(dataConfiguration);  //--Configuracion inicial
             } else {
-                that.PlayerMediator(data, true);         //--nueva configuracion
+                that.PlayerMediator(data, true);         // --nueva configuracion
 
             }
 

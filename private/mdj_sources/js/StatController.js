@@ -36,6 +36,8 @@
 
             //--Recuperando archivos de configuracion
 
+            console.log("data>>",data);
+
             var checkFile = file;
 
             var xhttp = new XMLHttpRequest();
@@ -45,12 +47,16 @@
                     var configData = JSON.parse(xhttp.responseText);
 
                     if (checkFile == "profile") {
+
+                        if(typeof (configData) =="undefined");
+                        {console.log("--->ok undefined")}
+
                         that.configData(configData.config.plugins[0].url, "profile");//Mandar URL profile
 
                     }
 
                     if (checkFile == "plugin") {
-                        that.configData("cargando plugin...", "plugin");//Caragando plugin
+                        that.configData(configData, "plugin");//-- Cargando plugin
 
                     }
 
@@ -66,21 +72,20 @@
 
         /* Carga de Modulos */
 
-        this.statModules("profile", BASE_conf + BASE_profiles);//--cargando profile
+        this.statModules("profile", BASE_conf + BASE_profiles);// --cargando profile
 
 
         this.configData = function (data, type) {
 
             if (type == "profile") {
 
-                console.log("profile->", data); //--Visualizar profile
-                that.statModules("plugin", data); //--cargar plugin LogTrust
+                console.log("profile->", data);  //--Visualizar profile
+                that.statModules("plugin", data); //-- cargar plugin LogTrust
 
             }
-
             if (type == "plugin") {
 
-                console.log("plugin->", data); //--Visualizar profile
+                console.log("plugin-->", data); //--Visualizar LogTrust
 
             }
 

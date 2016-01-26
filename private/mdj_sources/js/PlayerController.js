@@ -70,6 +70,7 @@
                     console.log('->Cambio de calidad');
                 });
 
+
                 //buttonBitrate.trigger('customevent');
 
 
@@ -146,7 +147,7 @@
 
                 that.PlayerMediator(dataConfiguration);  //--Configuracion inicial
             } else {
-                that.PlayerMediator(data, true);         //--nueva configuracion
+                that.PlayerMediator(data, true);         // --nueva configuracion
 
             }
 

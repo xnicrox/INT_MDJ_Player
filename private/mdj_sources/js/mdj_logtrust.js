@@ -57,7 +57,6 @@
 
         }
 
-
         //--Restriccion de envio
 
         for (var r0 in sendlogTrust) {

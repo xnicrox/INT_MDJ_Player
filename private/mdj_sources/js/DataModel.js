@@ -3,9 +3,10 @@
 
 FAPI_URL = "http://fapi-top.prisasd.com/api";
 BASE_WEB = location.hostname + "/mdj";
-BASE_conf ="../conf";
+BASE_conf = "../conf";
 
-BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
+BASE_profiles = "/profiles/mdj_profile.json"; //--Profiles para estadisticas
+BASE_plugin = "/plugin/mdj_logtrust.json"; //--Profiles para estadisticas
 
 
 
@@ -13,7 +14,7 @@ BASE_profiles="/profiles/mdj_profile.json"; //--Profiles para estadisticas
 
     //--parametros configuracion fapi --/
 
-    namespace.id_cuenta = ""                                               //--ID cuenta
+    namespace.id_cuenta = "";                                              //--ID cuenta
     namespace.media_type = "";                                             //--Tipo de medio ej:video/audio
     namespace.id_player = "";                                              //--Identificador del player ej:20
     namespace.id_media = "";                                               //--Identificador del video

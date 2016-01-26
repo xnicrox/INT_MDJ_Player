@@ -25,7 +25,7 @@ gulp.task('create_player',function(){
 
         .pipe(concat('mdj_player.js'))
         //.pipe(uglify())
-        .pipe(gulp.dest('../public/mdj_sources/js'))
+        .pipe(gulp.dest('../public/mdj_sources/js'));
 
     console.log(">>> Compilado");
 
